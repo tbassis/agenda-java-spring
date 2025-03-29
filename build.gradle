@@ -18,9 +18,20 @@ repositories {
 }
 
 dependencies {
+	// Spring Data JPA (ORM para banco de dados)
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// Spring Boot Web (API REST)
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// Driver do PostgreSQL
 	runtimeOnly 'org.postgresql:postgresql'
+
+	// Spring Boot DevTools (para desenvolvimento)
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }

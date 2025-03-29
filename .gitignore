@@ -1,0 +1,42 @@
+# Build e arquivos compilados
+/build/
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Arquivos de logs
+logs/
+*.log
+
+# Configurações locais do IDE (IntelliJ, Eclipse, VS Code)
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Dependências do Gradle
+gradle-app.setting
+.gradle/
+build/
+
+# Configurações e credenciais sensíveis
+application.properties
+application.yml
+.env
+
+# Banco de dados local
+*.db
+*.sqlite
+
+# Arquivos gerados pelo Docker
+docker-compose.override.yml
+

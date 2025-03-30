@@ -24,6 +24,6 @@ public interface ContatoRepository extends JpaRepository<Contato, Integer> {
     @Query("SELECT c FROM Contato c WHERE c.id = :id AND c.ativo = 'S'")
     Optional<Contato> findByIdAtivo(@Param("id") Integer id);
 
-    @Query("SELECT new com.example.agenda.dto.ContatoResumoDTO(c.id, c.nome) FROM Contato c WHERE c.ativo = 'S'")
+    @Query("SELECT new com.example.agenda.dto.ContatoResumoDTO(c.id, c.nome, c.favorito) FROM Contato c WHERE c.ativo = 'S'")
     List<ContatoResumoDTO> findResumoContatos();
 }

@@ -13,15 +13,18 @@ public class ContatoService {
         this.repository = repository;
     }
 
-    public List<Contato> listarContatos() {
-        return repository.findAll();
+    public List<Contato> listarAtivos() {
+        return repository.findByAtivo("S");
     }
 
     public Contato adicionarContato(Contato contato) {
         return repository.save(contato);
     }
 
-    public void removerContato(Long id) {
-        repository.deleteById(id);
+    public void removerContato(Integer id) {
+        Contato contato = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Contato não encontrado"));
+        contato.setAtivo("N");
+        repository.save(contato);
     }
 }

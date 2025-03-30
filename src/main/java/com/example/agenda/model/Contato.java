@@ -14,28 +14,28 @@ public class Contato {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contato_id")
-    private Long contato_id;
+    private Integer id;
 
     @Column(name = "contato_nome", nullable = false)
-    private String contato_nome;
+    private String nome;
 
     @Column(name = "contato_email", nullable = false)
-    private String contato_email;
+    private String email;
 
     @Column(name = "contato_celular", nullable = false, length = 11)
-    private String contato_celular;
+    private String celular;
 
     @Column(name = "contato_telefone")
-    private String contato_telefone;
+    private String telefone;
 
     @Column(name = "contato_sn_favorito", length = 1)
-    private char contato_sn_favorito = 'N';
+    private String favorito = "N";
 
     @Column(name = "contato_sn_ativo", length = 1)
-    private char contato_sn_ativo = 'S';
+    private String ativo = "S";
 
     @Column(name = "contato_dh_cad")
-    private LocalDateTime dataCadastro;
+    private LocalDateTime dataAniversario;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)

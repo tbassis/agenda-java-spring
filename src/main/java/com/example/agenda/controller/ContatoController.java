@@ -1,6 +1,7 @@
 package com.example.agenda.controller;
 
 import com.example.agenda.model.Contato;
+import com.example.agenda.dto.ContatoResumoDTO;
 import com.example.agenda.service.ContatoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,11 @@ public class ContatoController {
     @GetMapping
     public ResponseEntity<List<Contato>> listarAtivos() {
         return ResponseEntity.ok(service.listarAtivos());
+    }
+
+    @GetMapping("/resumo")
+    public ResponseEntity<List<ContatoResumoDTO>> listarResumo() {
+        return ResponseEntity.ok(service.listarResumoContatos());
     }
 
     @GetMapping("/{id}")

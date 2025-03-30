@@ -1,6 +1,7 @@
 package com.example.agenda.service;
 
 import com.example.agenda.model.Contato;
+import com.example.agenda.dto.ContatoResumoDTO;
 import com.example.agenda.repository.ContatoRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -15,6 +16,10 @@ public class ContatoService {
 
     public List<Contato> listarAtivos() {
         return repository.findByAtivo("S");
+    }
+
+    public List<ContatoResumoDTO> listarResumoContatos() {
+        return repository.findResumoContatos();
     }
 
     public Contato getContatoId(Integer id) {

@@ -26,13 +26,13 @@ public class ContatoController {
     }
 
     @GetMapping("/resumo")
-    public ResponseEntity<List<ContatoResumoDTO>> listarResumo() {
-        return ResponseEntity.ok(service.listarResumoContatos());
+    public ResponseEntity<List<ContatoResumoDTO>> listarAtivosResumo() {
+        return ResponseEntity.ok(service.listarAtivosResumo());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Contato> contatoId(@PathVariable Integer id) {
-        return ResponseEntity.ok(service.getContatoId(id));
+        return ResponseEntity.ok(service.getContatoById(id));
     }
 
     @PostMapping
@@ -41,8 +41,8 @@ public class ContatoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Contato> atualizar(@PathVariable Integer id, @RequestBody Contato contato) {
-        return ResponseEntity.ok(service.atualizar(id, contato));
+    public ResponseEntity<Contato> atualizar(@RequestBody Contato contato) {
+        return ResponseEntity.ok(service.atualizar(contato));
     }
 
     @DeleteMapping("/{id}")

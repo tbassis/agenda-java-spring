@@ -18,11 +18,11 @@ public class ContatoService {
         return repository.findByAtivo("S");
     }
 
-    public List<ContatoResumoDTO> listarResumoContatos() {
-        return repository.findResumoContatos();
+    public List<ContatoResumoDTO> listarAtivosResumo() {
+        return repository.findByAtivoDto();
     }
 
-    public Contato getContatoId(Integer id) {
+    public Contato getContatoById(Integer id) {
         return repository.findByIdAtivo(id)
                 .orElseThrow(() -> new RuntimeException("Contato não encontrado"));
     }
@@ -31,15 +31,12 @@ public class ContatoService {
         return repository.save(contato);
     }
 
-    public Contato atualizar(Integer id, Contato contato) {
-        contato.setId(id);
+    public Contato atualizar(Contato contato) {
+//        contato.setId(id);
         return repository.save(contato);
     }
 
     public void removerContato(Integer id) {
-        Contato contato = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Contato não encontrado"));
-        contato.setAtivo("N");
-        repository.save(contato);
+        repository.desativar(id);
     }
 }

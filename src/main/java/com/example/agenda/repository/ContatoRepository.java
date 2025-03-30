@@ -14,16 +14,17 @@ import java.util.Optional;
 
 public interface ContatoRepository extends JpaRepository<Contato, Integer> {
 
+    @Query("SELECT c FROM Contato c WHERE c.ativo = 'S'")
     List<Contato> findByAtivo(String ativo);
+
+    @Query("SELECT new com.example.agenda.dto.ContatoResumoDTO(c.id, c.nome, c.favorito) FROM Contato c WHERE c.ativo = 'S'")
+    List<ContatoResumoDTO> findByAtivoDto();
+
+    @Query("SELECT c FROM Contato c WHERE c.id = :id AND c.ativo = 'S'")
+    Optional<Contato> findByIdAtivo(@Param("id") Integer id);
 
     @Transactional
     @Modifying
     @Query("UPDATE Contato c SET c.ativo = 'N' WHERE c.id = ?1")
     void desativar(Integer id);
-
-    @Query("SELECT c FROM Contato c WHERE c.id = :id AND c.ativo = 'S'")
-    Optional<Contato> findByIdAtivo(@Param("id") Integer id);
-
-    @Query("SELECT new com.example.agenda.dto.ContatoResumoDTO(c.id, c.nome, c.favorito) FROM Contato c WHERE c.ativo = 'S'")
-    List<ContatoResumoDTO> findResumoContatos();
 }

@@ -5,9 +5,11 @@ import com.example.agenda.model.Contato;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ContatoRepository extends JpaRepository<Contato, Integer> {
 
@@ -17,4 +19,7 @@ public interface ContatoRepository extends JpaRepository<Contato, Integer> {
     @Modifying
     @Query("UPDATE Contato c SET c.ativo = 'N' WHERE c.id = ?1")
     void desativar(Integer id);
+
+    @Query("SELECT c FROM Contato c WHERE c.id = :id AND c.ativo = 'S'")
+    Optional<Contato> findByIdAtivo(@Param("id") Integer id);
 }

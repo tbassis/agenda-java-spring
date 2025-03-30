@@ -17,6 +17,11 @@ public class ContatoService {
         return repository.findByAtivo("S");
     }
 
+    public Contato getContatoId(Integer id) {
+        return repository.findByIdAtivo(id)
+                .orElseThrow(() -> new RuntimeException("Contato não encontrado"));
+    }
+
     public Contato adicionarContato(Contato contato) {
         return repository.save(contato);
     }

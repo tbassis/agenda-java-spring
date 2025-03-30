@@ -24,6 +24,11 @@ public class ContatoController {
         return ResponseEntity.ok(service.listarAtivos());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Contato> contatoId(@PathVariable Integer id) {
+        return ResponseEntity.ok(service.getContatoId(id));
+    }
+
     @PostMapping
     public Contato adicionar(@RequestBody Contato contato) {
         return service.adicionarContato(contato);

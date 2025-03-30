@@ -29,6 +29,11 @@ public class ContatoController {
         return service.adicionarContato(contato);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Contato> atualizar(@PathVariable Integer id, @RequestBody Contato contato) {
+        return ResponseEntity.ok(service.atualizar(id, contato));
+    }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void remover(@PathVariable Integer id) {

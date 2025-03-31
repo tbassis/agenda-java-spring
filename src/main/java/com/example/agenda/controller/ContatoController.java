@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/contatos")
@@ -49,5 +50,11 @@ public class ContatoController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void remover(@PathVariable Integer id) {
         service.removerContato(id);
+    }
+
+    @GetMapping("/verificar-numero/{numero}")
+    public ResponseEntity<?> verificarNumero(@PathVariable String numero) {
+        boolean existe = service.verificarExistenciaNumero(numero);
+        return ResponseEntity.ok().body(Map.of("existe", existe));
     }
 }

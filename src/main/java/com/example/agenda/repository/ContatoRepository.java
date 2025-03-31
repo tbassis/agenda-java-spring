@@ -30,7 +30,7 @@ public interface ContatoRepository extends JpaRepository<Contato, Integer> {
 
     @Query("SELECT CASE WHEN COUNT(c) > 0 THEN true ELSE false END " +
             "FROM Contato c " +
-            "WHERE (c.telefone = :numero OR c.celular = :numero) " +
+            "WHERE (c.celular = :numero) " +
             "AND c.ativo = 'S'")
     boolean existsByNumero(@Param("numero") String numero);
 }

@@ -39,4 +39,8 @@ public class ContatoService {
     public void removerContato(Integer id) {
         repository.desativar(id);
     }
+
+    public boolean verificarExistenciaNumero(String numero) {
+        return repository.existsByNumero(numero);
+    }
 }

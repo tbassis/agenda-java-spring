@@ -27,4 +27,10 @@ public interface ContatoRepository extends JpaRepository<Contato, Integer> {
     @Modifying
     @Query("UPDATE Contato c SET c.ativo = 'N' WHERE c.id = ?1")
     void desativar(Integer id);
+
+    @Query("SELECT CASE WHEN COUNT(c) > 0 THEN true ELSE false END " +
+            "FROM Contato c " +
+            "WHERE (c.telefone = :numero OR c.celular = :numero) " +
+            "AND c.ativo = 'S'")
+    boolean existsByNumero(@Param("numero") String numero);
 }

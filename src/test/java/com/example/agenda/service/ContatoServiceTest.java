@@ -69,29 +69,22 @@ class ContatoServiceTest {
         verify(repository).desativar(id);
     }
 
+    @Test
+    void deveListarApenasContatosAtivos() {
+        service.listarAtivos();
+        verify(repository).findByAtivo("S");
+    }
+
 
 //    @Test
-//    void deveRetornarUsuarioPeloId() {
-//        when(repository.findByIdAtivo(Integer).thenReturn(contato);
+//    void deveBuscarContatoAtivoPorId() {
+//        when(repository.save(any(Contato.class))).thenReturn(contato);
+//        Contato resultAdd = service.adicionarContato(contato);
 //
+//        when(repository.findById(1)).thenReturn(Optional.of(contato));
 //        Contato result = service.getContatoById(1);
 //
-//        assertNotNull(result);
-//        assertEquals(1, result.getId());
-//        assertEquals("Teste", result.getNome());
-//        assertEquals("teste@email.com", result.getEmail());
-//        assertEquals("81999556633", result.getCelular());
-//        assertEquals("N", result.getFavorito());
-//        assertEquals("S", result.getAtivo());
+//        assertEquals("Teste", resultAdd.getNome());
 //    }
 
-//    @Test
-//    void deveDesativarContato() {
-//        when(repository.findById(1)).thenReturn(Optional.of(contato));
-//
-//        service.removerContato(1);
-//
-//        verify(repository).save(contato);
-//        assertEquals("N", contato.getAtivo());
-//    }
 }

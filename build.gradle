@@ -18,14 +18,16 @@ repositories {
 }
 
 dependencies {
-	// Spring Data JPA (ORM para banco de dados)
+	// Spring boot
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-
-	// Spring Boot Web (API REST)
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-	// Driver do PostgreSQL
+	// PostgreSQL
 	runtimeOnly 'org.postgresql:postgresql'
+
+	// H2
+	testRuntimeOnly 'com.h2database:h2'
 
 	// Spring Boot DevTools (para desenvolvimento)
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -33,13 +35,8 @@ dependencies {
 	// Lombok
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
-
-	// Para testes
 	testCompileOnly 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
-
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('test') {
